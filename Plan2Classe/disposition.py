@@ -5,6 +5,10 @@ class Bloc:
         self.rang = rang  # Nombre de rangées dans le bloc
         self.tables = tables  # Nombre de tables par rangée
 
+    def espace_y(self):
+        """Calcule le nombre d'espaces entre les rangs pour chaque bloc (Axe Y)"""
+        return self.rang - 1
+
     def afficher_bloc(self):
         """Affiche les blocs."""
         print(
@@ -23,27 +27,46 @@ class Dispo:
             print(f"Bloc {i}:")
             bloc.afficher_bloc()
 
-    def compte_tables(self):
+
+class Salle:
+    """Gère les calculs globaux de la salle"""
+
+    def __init__(self, disposition: Dispo):
+        self.disposition = disposition
+
+    def total_tables(self):
         """Compte le nombre de tables dans la salle"""
-        compte = 0
-        for bloc in self.blocs:
-            compte = compte+bloc.rang*bloc.tables
-        return compte
+        total = 0
+        for bloc in self.disposition.blocs:
+            total += bloc.rang * bloc.tables
+        return total
 
-    def hauteur_salle(self):
-        """Trouve le nombre maximum de rangées"""
-        compte = 0
-        for bloc in self.blocs:
-            if bloc.rang > compte:
-                compte = bloc.rang
-        return compte
+    def largeur(self):
+        """Trouve le nombre total de tables sur l'axe X"""
+        largeur = 0
+        for bloc in self.disposition.blocs:
+            largeur += bloc.tables
+        return largeur
 
-    def largeur_salle(self):
-        """Trouve le nombre maximum de rangées"""
-        compte = 0
-        for bloc in self.blocs:
-            compte = bloc.tables+compte
-        return compte
+    def hauteur(self):
+        """Trouve le nombre maximum de rangées (Axe Y)"""
+        max_hauteur = 0
+        for bloc in self.disposition.blocs:
+            if bloc.rang > max_hauteur:
+                max_hauteur = bloc.rang
+        return max_hauteur
+
+    def espace_x(self):
+        """Trouve le nombre d'espaces entre les blocs (Axe X)"""
+        return len(self.disposition.blocs) - 1
+
+    def espace_y(self):
+        """Trouve le nombre d'espaces entre les blocs (Axe X)"""
+        max_espace_y = 0
+        for bloc in self.disposition.blocs:
+            if bloc.espace_y() > max_espace_y:
+                max_espace_y = bloc.espace_y()
+        return max_espace_y
 
 
 # Exemple d'utilisation
@@ -52,12 +75,5 @@ bloc_2 = Bloc(rang=4, tables=2)
 bloc_3 = Bloc(rang=4, tables=2)
 bloc_4 = Bloc(rang=4, tables=2)
 blocs = [bloc_1, bloc_2, bloc_3, bloc_4]
-espaces = len(blocs)-1
 
 disposition = Dispo(blocs)
-
-# print(disposition.afficher_disposition())
-# print(f"Total de tables : {disposition.compte_tables()}")
-# print(f"Hauteur salle : {disposition.hauteur_salle()}")
-# print(f"Largeur salle : {disposition.largeur_salle()}")
-# print(espaces)

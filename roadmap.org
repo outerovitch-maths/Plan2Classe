@@ -1,0 +1,53 @@
+* Roadmap pour le projet Plan de Classe
+** Introduction
+   Ce document décrit les étapes à suivre pour finaliser le programme de génération d'un plan de classe respectant des contraintes.
+   Le programme prendra en entrée un fichier CSV contenant les élèves et leurs caractéristiques, et produira un plan de classe aléatoire respectant les contraintes.
+
+** Étapes
+   Chaque tâche est accompagnée d'une estimation en temps de travail (approximatif). Les estimations sont basées sur le fait que tu as des connaissances de base en Python mais que tu es nouveau dans les DataFrames et la résolution de contraintes.
+
+*** Étape 1 : Finaliser `eleve.py` (1-2 heures)
+   - [x] Vérifier que la classe `Eleve` est correctement définie avec des attributs d'instance, et ajouter des méthodes si nécessaire.
+   - [x] Ajouter la validation des données pour les attributs `genre` et `attitude`.
+   - Temps estimé : 1-2 heures.
+
+*** Étape 2 : Définir `disposition.py` (3-4 heures)
+   - Créer la classe `DispositionClasse` qui modélise la disposition de la classe sous forme de matrice (2D).
+   - Ajouter une méthode pour initialiser une matrice vide avec des dimensions basées sur la disposition (ex: 2x4).
+   - Gérer des espaces inutilisables dans la disposition, si nécessaire.
+   - Temps estimé : 3-4 heures.
+
+*** Étape 3 : Apprendre à utiliser les DataFrames avec Pandas (4-6 heures)
+   - Prendre le temps d'apprendre comment lire des fichiers CSV et manipuler des données avec Pandas.
+   - Temps de recherche, tutoriels et pratique.
+   - Temps estimé : 4-6 heures.
+
+*** Étape 4 : Implémenter `plan.py` avec randomisation et contraintes (8-10 heures)
+   - Lire la documentation et tutoriels sur le module `python-constraint`.
+   - Implémenter un algorithme de randomisation avec respect des contraintes (par exemple éviter de placer deux élèves bavards côte à côte).
+   - Utiliser la disposition définie dans `disposition.py` et le fichier CSV pour distribuer les élèves de manière aléatoire.
+   - Tester les placements et ajuster le code si nécessaire.
+   - Temps estimé : 8-10 heures.
+
+*** Étape 5 : Générer un PDF ou une image avec `output.py` (4-5 heures)
+   - Utiliser `reportlab` pour générer un PDF contenant le plan de classe final.
+   - Utiliser `Pillow` si tu veux générer une image au lieu d'un PDF.
+   - Temps estimé : 4-5 heures.
+
+*** Étape 6 : Intégrer tout dans `main.py` (3-4 heures)
+   - Finaliser `main.py` pour qu'il lise le fichier CSV, génère un plan de classe aléatoire, et enregistre la sortie dans un fichier PDF ou image.
+   - Tester le programme complet et faire les ajustements nécessaires.
+   - Temps estimé : 3-4 heures.
+
+*** Étape 7 : Ajout de fonctionnalités supplémentaires (facultatif) (4-5 heures)
+   - Ajouter des options supplémentaires dans le fichier CSV (par exemple d'autres caractéristiques des élèves).
+   - Ajouter d'autres contraintes possibles (par exemple, ne pas placer certains élèves à certaines places).
+   - Temps estimé : 4-5 heures.
+
+*** Étape 8 : Éventuellement, apprendre à utiliser les tests unitaires (facultatif) (6-8 heures)
+   - Ajouter des tests unitaires pour chaque classe et fonction, surtout pour les contraintes de placement.
+   - Utiliser la bibliothèque `unittest` pour automatiser les tests.
+   - Temps estimé : 6-8 heures.
+
+** Conclusion
+   En suivant cette roadmap, tu devrais avoir une vue d'ensemble de ce qui te reste à accomplir. Chaque étape inclut une estimation du temps nécessaire, mais ces durées peuvent varier selon ton rythme d'apprentissage. Commence par les tâches les plus simples, puis passe aux tâches plus complexes à mesure que tu progresses.

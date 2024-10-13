@@ -1,7 +1,8 @@
 from PIL import Image
 from eleve import Eleve
-from disposition import Dispo
 from disposition import Bloc
+from disposition import Dispo
+from disposition import Salle
 
 
 class Myimage:
@@ -19,21 +20,21 @@ class Myimage:
 
 
 bloc_1 = Bloc(rang=4, tables=2)
-bloc_2 = Bloc(rang=4, tables=2)
-bloc_3 = Bloc(rang=4, tables=2)
-bloc_4 = Bloc(rang=4, tables=2)
+bloc_2 = Bloc(rang=5, tables=2)
+bloc_3 = Bloc(rang=4, tables=3)
+bloc_4 = Bloc(rang=3, tables=2)
 blocs = [bloc_1, bloc_2, bloc_3, bloc_4]
-espaces = len(blocs)-1
 
 disposition = Dispo(blocs)
+salle = Salle(disposition)
 
 # Définir les dimensions de l'image
 margins = 5
-h = int(disposition.hauteur_salle()) * 5 + 2 * margins
-l = int(disposition.largeur_salle()) * 10 + espaces * 5 + 2 * margins
+h = salle.hauteur() * 5 + 2 * margins + salle.espace_y() * 5
+l = salle.largeur() * 10 + 2 * margins + salle.espace_x() * 5
 
 # Créer l'image avec la classe Myimage
-image = Myimage(h, l)
+image = Myimage(l, h)
 
 # Générer l'image blanche
 image.output_image()

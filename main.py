@@ -39,7 +39,10 @@ def selection():
             print("Choix impossible")
 
 
-selection()
+if __name__ == "__main__":
+    selection()
+
+# Tests
 # e1 = Eleve('Bob', 'Bool', 'M', 3)
 # print(e1.nom)
 # print(e1.prenom)
